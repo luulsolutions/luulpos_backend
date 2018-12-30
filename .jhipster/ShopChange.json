@@ -1,0 +1,45 @@
+{
+    "name": "ShopChange",
+    "fields": [
+        {
+            "fieldName": "change",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "changedEntity",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "note",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "changeDate",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "shop",
+            "otherEntityName": "shop",
+            "otherEntityField": "shopName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "changedBy",
+            "otherEntityName": "profile",
+            "otherEntityField": "firstName"
+        }
+    ],
+    "changelogDate": "20181208032939",
+    "entityTableName": "shop_change",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

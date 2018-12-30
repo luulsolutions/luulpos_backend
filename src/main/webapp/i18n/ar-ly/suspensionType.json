@@ -1,0 +1,14 @@
+{
+  "luulposApp": {
+    "SuspensionType": {
+      "null": "",
+      "BANNED_FOR_LIFE": "BANNED_FOR_LIFE",
+      "BANNED_TEMPORARILY": "BANNED_TEMPORARILY",
+      "DELETED_BY_USER": "DELETED_BY_USER",
+      "DELETED_BY_ADMIN": "DELETED_BY_ADMIN",
+      "TEMP_DEACTIVATION_BY_USER": "TEMP_DEACTIVATION_BY_USER",
+      "UNDER_INVESTIGATION": "UNDER_INVESTIGATION",
+      "NONE": "NONE"
+    }
+  }
+}

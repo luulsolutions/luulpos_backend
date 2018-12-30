@@ -1,0 +1,27 @@
+{
+  "luulposApp": {
+    "company": {
+      "home": {
+        "title": "Companies",
+        "createLabel": "Create a new Company",
+        "createOrEditLabel": "Create or edit a Company",
+        "search": "Search for Company"
+      },
+      "created": "A new Company is created with identifier {{ param }}",
+      "updated": "A Company is updated with identifier {{ param }}",
+      "deleted": "A Company is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Company {{ id }}?"
+      },
+      "detail": {
+        "title": "Company"
+      },
+      "companyName": "Company Name",
+      "description": "Description",
+      "note": "Note",
+      "companyLogo": "Company Logo",
+      "companyLogoUrl": "Company Logo Url",
+      "active": "Active"
+    }
+  }
+}

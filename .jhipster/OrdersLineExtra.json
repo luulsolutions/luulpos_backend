@@ -1,0 +1,63 @@
+{
+    "name": "OrdersLineExtra",
+    "fields": [
+        {
+            "fieldName": "ordersLineExtraName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "ordersLineExtraValue",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "ordersLineExtraPrice",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "ordersOptionDescription",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fullPhoto",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "fullPhotoUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "thumbnailPhoto",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "thumbnailPhotoUrl",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "ordersLineVariant",
+            "otherEntityName": "ordersLineVariant",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20181208032931",
+    "entityTableName": "orders_line_extra",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

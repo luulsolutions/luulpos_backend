@@ -1,0 +1,50 @@
+{
+    "name": "SuspensionHistory",
+    "fields": [
+        {
+            "fieldName": "suspendedDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "suspensionType",
+            "fieldType": "SuspensionType",
+            "fieldValues": "BANNED_FOR_LIFE,BANNED_TEMPORARILY,DELETED_BY_USER,DELETED_BY_ADMIN,TEMP_DEACTIVATION_BY_USER,UNDER_INVESTIGATION,NONE"
+        },
+        {
+            "fieldName": "suspendedReason",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "resolutionNote",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "unsuspensionDate",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "profile",
+            "otherEntityName": "profile",
+            "otherEntityField": "firstName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "suspendedBy",
+            "otherEntityName": "profile",
+            "otherEntityField": "firstName"
+        }
+    ],
+    "changelogDate": "20181208032935",
+    "entityTableName": "suspension_history",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

@@ -1,0 +1,28 @@
+{
+  "luulposApp": {
+    "suspensionHistory": {
+      "home": {
+        "title": "Suspension Histories",
+        "createLabel": "Create a new Suspension History",
+        "createOrEditLabel": "Create or edit a Suspension History",
+        "search": "Search for Suspension History"
+      },
+      "created": "A new Suspension History is created with identifier {{ param }}",
+      "updated": "A Suspension History is updated with identifier {{ param }}",
+      "deleted": "A Suspension History is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Suspension History {{ id }}?"
+      },
+      "detail": {
+        "title": "Suspension History"
+      },
+      "suspendedDate": "Suspended Date",
+      "suspensionType": "Suspension Type",
+      "suspendedReason": "Suspended Reason",
+      "resolutionNote": "Resolution Note",
+      "unsuspensionDate": "Unsuspension Date",
+      "profile": "Profile",
+      "suspendedBy": "Suspended By"
+    }
+  }
+}

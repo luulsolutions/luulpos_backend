@@ -1,0 +1,32 @@
+{
+  "luulposApp": {
+    "ordersLineVariant": {
+      "home": {
+        "title": "Orders Line Variants",
+        "createLabel": "Create a new Orders Line Variant",
+        "createOrEditLabel": "Create or edit a Orders Line Variant",
+        "search": "Search for Orders Line Variant"
+      },
+      "created": "A new Orders Line Variant is created with identifier {{ param }}",
+      "updated": "A Orders Line Variant is updated with identifier {{ param }}",
+      "deleted": "A Orders Line Variant is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Orders Line Variant {{ id }}?"
+      },
+      "detail": {
+        "title": "Orders Line Variant"
+      },
+      "variantName": "Variant Name",
+      "variantValue": "Variant Value",
+      "description": "Description",
+      "percentage": "Percentage",
+      "fullPhoto": "Full Photo",
+      "fullPhotoUrl": "Full Photo Url",
+      "thumbnailPhoto": "Thumbnail Photo",
+      "thumbnailPhotoUrl": "Thumbnail Photo Url",
+      "price": "Price",
+      "ordersLine": "Orders Line",
+      "ordersLineExtras": "Orders Line Extras"
+    }
+  }
+}

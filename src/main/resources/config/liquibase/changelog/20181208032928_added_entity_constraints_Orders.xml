@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Orders.
+    -->
+    <changeSet id="20181208032928-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="payment_method_id"
+                                 baseTableName="orders"
+                                 constraintName="fk_orders_payment_method_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="payment_method"/>
+
+        <addForeignKeyConstraint baseColumnNames="sold_by_id"
+                                 baseTableName="orders"
+                                 constraintName="fk_orders_sold_by_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="profile"/>
+
+        <addForeignKeyConstraint baseColumnNames="prepared_by_id"
+                                 baseTableName="orders"
+                                 constraintName="fk_orders_prepared_by_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="profile"/>
+
+        <addForeignKeyConstraint baseColumnNames="shop_device_id"
+                                 baseTableName="orders"
+                                 constraintName="fk_orders_shop_device_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="shop_device"/>
+
+        <addForeignKeyConstraint baseColumnNames="section_table_id"
+                                 baseTableName="orders"
+                                 constraintName="fk_orders_section_table_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="section_table"/>
+
+        <addForeignKeyConstraint baseColumnNames="shop_id"
+                                 baseTableName="orders"
+                                 constraintName="fk_orders_shop_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="shop"/>
+
+    </changeSet>
+</databaseChangeLog>

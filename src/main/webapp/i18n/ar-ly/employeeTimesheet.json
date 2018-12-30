@@ -1,0 +1,28 @@
+{
+  "luulposApp": {
+    "employeeTimesheet": {
+      "home": {
+        "title": "Employee Timesheets",
+        "createLabel": "Create a new Employee Timesheet",
+        "createOrEditLabel": "Create or edit a Employee Timesheet",
+        "search": "Search for Employee Timesheet"
+      },
+      "created": "A new Employee Timesheet is created with identifier {{ param }}",
+      "updated": "A Employee Timesheet is updated with identifier {{ param }}",
+      "deleted": "A Employee Timesheet is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Employee Timesheet {{ id }}?"
+      },
+      "detail": {
+        "title": "Employee Timesheet"
+      },
+      "checkinTime": "Checkin Time",
+      "checkOutTime": "Check Out Time",
+      "regularHoursWorked": "Regular Hours Worked",
+      "overTimeHoursWorked": "Over Time Hours Worked",
+      "pay": "Pay",
+      "profile": "Profile",
+      "shop": "Shop"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "luulposApp": {
+    "payment": {
+      "home": {
+        "title": "Payments",
+        "createLabel": "Create a new Payment",
+        "createOrEditLabel": "Create or edit a Payment",
+        "search": "Search for Payment"
+      },
+      "created": "A new Payment is created with identifier {{ param }}",
+      "updated": "A Payment is updated with identifier {{ param }}",
+      "deleted": "A Payment is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Payment {{ id }}?"
+      },
+      "detail": {
+        "title": "Payment"
+      },
+      "paymentDate": "Payment Date",
+      "paymentProvider": "Payment Provider",
+      "amount": "Amount",
+      "paymentStatus": "Payment Status",
+      "curency": "Curency",
+      "customerName": "Customer Name",
+      "shop": "Shop",
+      "processedBy": "Processed By",
+      "paymentMethod": "Payment Method",
+      "order": "Order"
+    }
+  }
+}

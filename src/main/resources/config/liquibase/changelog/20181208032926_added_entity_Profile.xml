@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity Profile.
+    -->
+    <changeSet id="20181208032926-1" author="jhipster">
+        <createTable tableName="profile">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="last_name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="email" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="user_type" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="date_of_birth" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="gender" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="registeration_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="last_access" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="profile_status" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="telephone" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="mobile" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="hourly_pay_rate" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="thumbnail_photo" type="longblob">
+                <constraints nullable="true" />
+            </column>
+            <column name="thumbnail_photo_content_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="thumbnail_photo_url" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="full_photo" type="longblob">
+                <constraints nullable="true" />
+            </column>
+            <column name="full_photo_content_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="full_photo_url" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="active" type="bit">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="shop_change_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="user_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_profile_user_id" />
+            </column>
+            <column name="shop_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        <dropDefaultValue tableName="profile" columnName="registeration_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="profile" columnName="last_access" columnDataType="datetime"/>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

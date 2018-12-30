@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity SuspensionHistory.
+    -->
+    <changeSet id="20181208032935-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="profile_id"
+                                 baseTableName="suspension_history"
+                                 constraintName="fk_suspension_history_profile_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="profile"/>
+
+        <addForeignKeyConstraint baseColumnNames="suspended_by_id"
+                                 baseTableName="suspension_history"
+                                 constraintName="fk_suspension_history_suspended_by_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="profile"/>
+
+    </changeSet>
+</databaseChangeLog>

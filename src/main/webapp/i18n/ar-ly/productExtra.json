@@ -1,0 +1,29 @@
+{
+  "luulposApp": {
+    "productExtra": {
+      "home": {
+        "title": "Product Extras",
+        "createLabel": "Create a new Product Extra",
+        "createOrEditLabel": "Create or edit a Product Extra",
+        "search": "Search for Product Extra"
+      },
+      "created": "A new Product Extra is created with identifier {{ param }}",
+      "updated": "A Product Extra is updated with identifier {{ param }}",
+      "deleted": "A Product Extra is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Product Extra {{ id }}?"
+      },
+      "detail": {
+        "title": "Product Extra"
+      },
+      "extraName": "Extra Name",
+      "description": "Description",
+      "extraValue": "Extra Value",
+      "fullPhoto": "Full Photo",
+      "fullPhotoUrl": "Full Photo Url",
+      "thumbnailPhoto": "Thumbnail Photo",
+      "thumbnailPhotoUrl": "Thumbnail Photo Url",
+      "product": "Product"
+    }
+  }
+}

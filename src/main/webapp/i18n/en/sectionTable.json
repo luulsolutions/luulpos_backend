@@ -1,0 +1,24 @@
+{
+  "luulposApp": {
+    "sectionTable": {
+      "home": {
+        "title": "Section Tables",
+        "createLabel": "Create a new Section Table",
+        "createOrEditLabel": "Create or edit a Section Table",
+        "search": "Search for Section Table"
+      },
+      "created": "A new Section Table is created with identifier {{ param }}",
+      "updated": "A Section Table is updated with identifier {{ param }}",
+      "deleted": "A Section Table is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Section Table {{ id }}?"
+      },
+      "detail": {
+        "title": "Section Table"
+      },
+      "tableNumber": "Table Number",
+      "description": "Description",
+      "shopSections": "Shop Sections"
+    }
+  }
+}

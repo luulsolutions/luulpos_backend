@@ -1,0 +1,126 @@
+{
+    "name": "Shop",
+    "fields": [
+        {
+            "fieldName": "shopName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "shopAccountType",
+            "fieldType": "ShopAccountType",
+            "fieldValues": "TRIAL_ACCOUNT,SILVER_ACCOUNT,GOLD_ACCOUNT"
+        },
+        {
+            "fieldName": "approvalDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "address",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "note",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "landland",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "mobile",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "shopLogo",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "shopLogoUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "active",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "currency",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "company",
+            "otherEntityName": "company",
+            "otherEntityField": "companyName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "approvedBy",
+            "otherEntityName": "profile",
+            "otherEntityField": "firstName"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "profiles",
+            "otherEntityName": "profile",
+            "otherEntityRelationshipName": "shop"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "productCategories",
+            "otherEntityName": "productCategory",
+            "otherEntityRelationshipName": "shop"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "productTypes",
+            "otherEntityName": "productType",
+            "otherEntityRelationshipName": "shop"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "systemConfigs",
+            "otherEntityName": "systemConfig",
+            "otherEntityRelationshipName": "shop"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "discounts",
+            "otherEntityName": "discount",
+            "otherEntityRelationshipName": "shop"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "taxes",
+            "otherEntityName": "tax",
+            "otherEntityRelationshipName": "shop"
+        }
+    ],
+    "changelogDate": "20181208032915",
+    "entityTableName": "shop",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

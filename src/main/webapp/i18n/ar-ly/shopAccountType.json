@@ -1,0 +1,10 @@
+{
+  "luulposApp": {
+    "ShopAccountType": {
+      "null": "",
+      "TRIAL_ACCOUNT": "TRIAL_ACCOUNT",
+      "SILVER_ACCOUNT": "SILVER_ACCOUNT",
+      "GOLD_ACCOUNT": "GOLD_ACCOUNT"
+    }
+  }
+}

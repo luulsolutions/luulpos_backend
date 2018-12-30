@@ -1,0 +1,40 @@
+{
+  "luulposApp": {
+    "orders": {
+      "home": {
+        "title": "Orders",
+        "createLabel": "Create a new Orders",
+        "createOrEditLabel": "Create or edit a Orders",
+        "search": "Search for Orders"
+      },
+      "created": "A new Orders is created with identifier {{ param }}",
+      "updated": "A Orders is updated with identifier {{ param }}",
+      "deleted": "A Orders is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Orders {{ id }}?"
+      },
+      "detail": {
+        "title": "Orders"
+      },
+      "description": "Description",
+      "customerName": "Customer Name",
+      "totalPrice": "Total Price",
+      "quantity": "Quantity",
+      "discountPercentage": "Discount Percentage",
+      "discountAmount": "Discount Amount",
+      "taxPercentage": "Tax Percentage",
+      "taxAmount": "Tax Amount",
+      "orderStatus": "Order Status",
+      "note": "Note",
+      "orderDate": "Order Date",
+      "isVariantOrder": "Is Variant Order",
+      "ordersLines": "Orders Lines",
+      "paymentMethod": "Payment Method",
+      "soldBy": "Sold By",
+      "preparedBy": "Prepared By",
+      "shopDevice": "Shop Device",
+      "sectionTable": "Section Table",
+      "shop": "Shop"
+    }
+  }
+}

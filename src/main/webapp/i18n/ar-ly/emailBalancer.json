@@ -1,0 +1,28 @@
+{
+  "luulposApp": {
+    "emailBalancer": {
+      "home": {
+        "title": "Email Balancers",
+        "createLabel": "Create a new Email Balancer",
+        "createOrEditLabel": "Create or edit a Email Balancer",
+        "search": "Search for Email Balancer"
+      },
+      "created": "A new Email Balancer is created with identifier {{ param }}",
+      "updated": "A Email Balancer is updated with identifier {{ param }}",
+      "deleted": "A Email Balancer is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Email Balancer {{ id }}?"
+      },
+      "detail": {
+        "title": "Email Balancer"
+      },
+      "relayId": "Relay Id",
+      "relayPassword": "Relay Password",
+      "startingCount": "Starting Count",
+      "endingCount": "Ending Count",
+      "provider": "Provider",
+      "relayPort": "Relay Port",
+      "enabled": "Enabled"
+    }
+  }
+}

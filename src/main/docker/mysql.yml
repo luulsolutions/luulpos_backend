@@ -1,0 +1,14 @@
+version: '2'
+services:
+    luulpos-mysql:
+        image: mysql:5.7.20
+        # volumes:
+        #     - ~/volumes/jhipster/luulpos/mysql/:/var/lib/mysql/
+        environment:
+            - MYSQL_USER=root
+            - MYSQL_ROOT_PASSWORD=1234
+            - MYSQL_ROOT_HOST=%
+            - MYSQL_DATABASE=luulpos
+        ports:
+            - 3306:3306
+        command: mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8mb4 --explicit_defaults_for_timestamp

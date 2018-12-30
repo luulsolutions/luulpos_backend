@@ -1,0 +1,29 @@
+application {
+  config {
+    applicationType monolith
+    authenticationType jwt
+    baseName luulpos
+    buildTool maven
+    cacheProvider ehcache
+    clientFramework react
+    clientPackageManager npm
+    databaseType sql
+    prodDatabaseType mysql
+    devDatabaseType mysql
+    enableSwaggerCodegen false
+    enableTranslation true
+    languages [en,ar-ly]
+    nativeLanguage en
+    packageName com.luulsolutions.luulpos
+    testFrameworks [cucumber, gatling, protractor]
+    useSass true
+    enableHibernateCache true
+    jhiPrefix jhi
+    dtoSuffix DTO
+    searchEngine elasticsearch
+    serverPort 8080
+    skipClient false
+  }
+
+entities *
+}

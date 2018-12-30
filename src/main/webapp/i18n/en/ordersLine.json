@@ -1,0 +1,32 @@
+{
+  "luulposApp": {
+    "ordersLine": {
+      "home": {
+        "title": "Orders Lines",
+        "createLabel": "Create a new Orders Line",
+        "createOrEditLabel": "Create or edit a Orders Line",
+        "search": "Search for Orders Line"
+      },
+      "created": "A new Orders Line is created with identifier {{ param }}",
+      "updated": "A Orders Line is updated with identifier {{ param }}",
+      "deleted": "A Orders Line is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Orders Line {{ id }}?"
+      },
+      "detail": {
+        "title": "Orders Line"
+      },
+      "ordersLineName": "Orders Line Name",
+      "ordersLineValue": "Orders Line Value",
+      "ordersLinePrice": "Orders Line Price",
+      "ordersLineDescription": "Orders Line Description",
+      "thumbnailPhoto": "Thumbnail Photo",
+      "fullPhoto": "Full Photo",
+      "fullPhotoUrl": "Full Photo Url",
+      "thumbnailPhotoUrl": "Thumbnail Photo Url",
+      "orders": "Orders",
+      "ordersLineVariants": "Orders Line Variants",
+      "product": "Product"
+    }
+  }
+}

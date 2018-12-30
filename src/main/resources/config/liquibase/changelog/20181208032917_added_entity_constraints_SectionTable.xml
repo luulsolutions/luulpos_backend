@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity SectionTable.
+    -->
+    <changeSet id="20181208032917-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="shop_sections_id"
+                                 baseTableName="section_table"
+                                 constraintName="fk_section_table_shop_sections_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="shop_section"/>
+
+    </changeSet>
+</databaseChangeLog>

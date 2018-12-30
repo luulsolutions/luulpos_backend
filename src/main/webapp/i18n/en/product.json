@@ -1,0 +1,42 @@
+{
+  "luulposApp": {
+    "product": {
+      "home": {
+        "title": "Products",
+        "createLabel": "Create a new Product",
+        "createOrEditLabel": "Create or edit a Product",
+        "search": "Search for Product"
+      },
+      "created": "A new Product is created with identifier {{ param }}",
+      "updated": "A Product is updated with identifier {{ param }}",
+      "deleted": "A Product is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Product {{ id }}?"
+      },
+      "detail": {
+        "title": "Product"
+      },
+      "productName": "Product Name",
+      "productDescription": "Product Description",
+      "price": "Price",
+      "quantity": "Quantity",
+      "productImageFull": "Product Image Full",
+      "productImageFullUrl": "Product Image Full Url",
+      "productImageThumb": "Product Image Thumb",
+      "productImageThumbUrl": "Product Image Thumb Url",
+      "dateCreated": "Date Created",
+      "barcode": "Barcode",
+      "serialCode": "Serial Code",
+      "priorityPosition": "Priority Position",
+      "active": "Active",
+      "isVariantProduct": "Is Variant Product",
+      "variants": "Variants",
+      "extras": "Extras",
+      "productTypes": "Product Types",
+      "shop": "Shop",
+      "discounts": "Discounts",
+      "taxes": "Taxes",
+      "category": "Category"
+    }
+  }
+}

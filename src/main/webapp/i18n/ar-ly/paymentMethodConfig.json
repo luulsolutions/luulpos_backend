@@ -1,0 +1,26 @@
+{
+  "luulposApp": {
+    "paymentMethodConfig": {
+      "home": {
+        "title": "Payment Method Configs",
+        "createLabel": "Create a new Payment Method Config",
+        "createOrEditLabel": "Create or edit a Payment Method Config",
+        "search": "Search for Payment Method Config"
+      },
+      "created": "A new Payment Method Config is created with identifier {{ param }}",
+      "updated": "A Payment Method Config is updated with identifier {{ param }}",
+      "deleted": "A Payment Method Config is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Payment Method Config {{ id }}?"
+      },
+      "detail": {
+        "title": "Payment Method Config"
+      },
+      "key": "Key",
+      "value": "Value",
+      "note": "Note",
+      "enabled": "Enabled",
+      "paymentMethod": "Payment Method"
+    }
+  }
+}

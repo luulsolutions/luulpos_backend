@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity OrdersLineExtra.
+    -->
+    <changeSet id="20181208032931-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="orders_line_variant_id"
+                                 baseTableName="orders_line_extra"
+                                 constraintName="fk_orders_line_extra_orders_line_variant_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="orders_line_variant"/>
+
+    </changeSet>
+</databaseChangeLog>

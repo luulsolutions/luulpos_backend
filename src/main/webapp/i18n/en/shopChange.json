@@ -1,0 +1,27 @@
+{
+  "luulposApp": {
+    "shopChange": {
+      "home": {
+        "title": "Shop Changes",
+        "createLabel": "Create a new Shop Change",
+        "createOrEditLabel": "Create or edit a Shop Change",
+        "search": "Search for Shop Change"
+      },
+      "created": "A new Shop Change is created with identifier {{ param }}",
+      "updated": "A Shop Change is updated with identifier {{ param }}",
+      "deleted": "A Shop Change is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Shop Change {{ id }}?"
+      },
+      "detail": {
+        "title": "Shop Change"
+      },
+      "change": "Change",
+      "changedEntity": "Changed Entity",
+      "note": "Note",
+      "changeDate": "Change Date",
+      "shop": "Shop",
+      "changedBy": "Changed By"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "luulposApp": {
+    "discount": {
+      "home": {
+        "title": "Discounts",
+        "createLabel": "Create a new Discount",
+        "createOrEditLabel": "Create or edit a Discount",
+        "search": "Search for Discount"
+      },
+      "created": "A new Discount is created with identifier {{ param }}",
+      "updated": "A Discount is updated with identifier {{ param }}",
+      "deleted": "A Discount is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Discount {{ id }}?"
+      },
+      "detail": {
+        "title": "Discount"
+      },
+      "description": "Description",
+      "percentage": "Percentage",
+      "amount": "Amount",
+      "active": "Active",
+      "shop": "Shop",
+      "product": "Product"
+    }
+  }
+}

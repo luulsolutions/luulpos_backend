@@ -1,0 +1,41 @@
+{
+  "luulposApp": {
+    "profile": {
+      "home": {
+        "title": "Profiles",
+        "createLabel": "Create a new Profile",
+        "createOrEditLabel": "Create or edit a Profile",
+        "search": "Search for Profile"
+      },
+      "created": "A new Profile is created with identifier {{ param }}",
+      "updated": "A Profile is updated with identifier {{ param }}",
+      "deleted": "A Profile is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Profile {{ id }}?"
+      },
+      "detail": {
+        "title": "Profile"
+      },
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "userType": "User Type",
+      "dateOfBirth": "Date Of Birth",
+      "gender": "Gender",
+      "registerationDate": "Registeration Date",
+      "lastAccess": "Last Access",
+      "profileStatus": "Profile Status",
+      "telephone": "Telephone",
+      "mobile": "Mobile",
+      "hourlyPayRate": "Hourly Pay Rate",
+      "thumbnailPhoto": "Thumbnail Photo",
+      "thumbnailPhotoUrl": "Thumbnail Photo Url",
+      "fullPhoto": "Full Photo",
+      "fullPhotoUrl": "Full Photo Url",
+      "active": "Active",
+      "shopChangeId": "Shop Change Id",
+      "user": "User",
+      "shop": "Shop"
+    }
+  }
+}

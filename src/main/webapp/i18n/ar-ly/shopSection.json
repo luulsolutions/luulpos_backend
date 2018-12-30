@@ -1,0 +1,27 @@
+{
+  "luulposApp": {
+    "shopSection": {
+      "home": {
+        "title": "Shop Sections",
+        "createLabel": "Create a new Shop Section",
+        "createOrEditLabel": "Create or edit a Shop Section",
+        "search": "Search for Shop Section"
+      },
+      "created": "A new Shop Section is created with identifier {{ param }}",
+      "updated": "A Shop Section is updated with identifier {{ param }}",
+      "deleted": "A Shop Section is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Shop Section {{ id }}?"
+      },
+      "detail": {
+        "title": "Shop Section"
+      },
+      "sectionName": "Section Name",
+      "description": "Description",
+      "surchargePercentage": "Surcharge Percentage",
+      "surchargeFlatAmount": "Surcharge Flat Amount",
+      "usePercentage": "Use Percentage",
+      "shop": "Shop"
+    }
+  }
+}

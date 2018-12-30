@@ -1,0 +1,43 @@
+{
+  "luulposApp": {
+    "shop": {
+      "home": {
+        "title": "Shops",
+        "createLabel": "Create a new Shop",
+        "createOrEditLabel": "Create or edit a Shop",
+        "search": "Search for Shop"
+      },
+      "created": "A new Shop is created with identifier {{ param }}",
+      "updated": "A Shop is updated with identifier {{ param }}",
+      "deleted": "A Shop is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Shop {{ id }}?"
+      },
+      "detail": {
+        "title": "Shop"
+      },
+      "shopName": "Shop Name",
+      "shopAccountType": "Shop Account Type",
+      "approvalDate": "Approval Date",
+      "address": "Address",
+      "email": "Email",
+      "description": "Description",
+      "note": "Note",
+      "landland": "Landland",
+      "mobile": "Mobile",
+      "createdDate": "Created Date",
+      "shopLogo": "Shop Logo",
+      "shopLogoUrl": "Shop Logo Url",
+      "active": "Active",
+      "currency": "Currency",
+      "company": "Company",
+      "approvedBy": "Approved By",
+      "profiles": "Profiles",
+      "productCategories": "Product Categories",
+      "productTypes": "Product Types",
+      "systemConfigs": "System Configs",
+      "discounts": "Discounts",
+      "taxes": "Taxes"
+    }
+  }
+}

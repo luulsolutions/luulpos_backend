@@ -1,0 +1,12 @@
+version: '2'
+services:
+    luulpos-elasticsearch:
+        image: elasticsearch:5.6.5
+        # volumes:
+        #     - ~/volumes/jhipster/luulpos/elasticsearch/:/usr/share/elasticsearch/data/
+        ports:
+            - 9200:9200
+            - 9300:9300
+        command: -Ediscovery.type=single-node -Etransport.host=0.0.0.0 -E http.port=9200 -E http.cors.allow-origin="http://localhost:1358" -E http.cors.enabled=true -E http.cors.allow-headers=X-Requested-With,X-Auth-Token,Content-Type,Content-Length,Authorization -E http.cors.allow-credentials=true
+        environment:
+            - "ES_JAVA_OPTS=-Xms2048m -Xmx2048m"

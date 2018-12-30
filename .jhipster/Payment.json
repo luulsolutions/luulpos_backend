@@ -1,0 +1,66 @@
+{
+    "name": "Payment",
+    "fields": [
+        {
+            "fieldName": "paymentDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "paymentProvider",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "amount",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "paymentStatus",
+            "fieldType": "PaymentStatus",
+            "fieldValues": "PENDING,PAID,CANCELLED,REFUNDED,FAILED"
+        },
+        {
+            "fieldName": "curency",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "customerName",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "shop",
+            "otherEntityName": "shop",
+            "otherEntityField": "shopName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "processedBy",
+            "otherEntityName": "profile",
+            "otherEntityField": "firstName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "paymentMethod",
+            "otherEntityName": "paymentMethod",
+            "otherEntityField": "paymentMethod"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "order",
+            "otherEntityName": "orders",
+            "otherEntityField": "description"
+        }
+    ],
+    "changelogDate": "20181208032938",
+    "entityTableName": "payment",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

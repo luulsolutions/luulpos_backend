@@ -1,0 +1,46 @@
+{
+  "generator-jhipster": {
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "enableHibernateCache": true,
+    "enableSwaggerCodegen": false,
+    "enableTranslation": true,
+    "jhiPrefix": "jhi",
+    "languages": [
+      "en",
+      "ar-ly"
+    ],
+    "messageBroker": false,
+    "nativeLanguage": "en",
+    "packageName": "com.luulsolutions.luulpos",
+    "packageFolder": "com/luulsolutions/luulpos",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "elasticsearch",
+    "serviceDiscoveryType": false,
+    "skipClient": false,
+    "skipServer": false,
+    "testFrameworks": [
+      "cucumber",
+      "gatling",
+      "protractor"
+    ],
+    "websocket": false,
+    "applicationType": "monolith",
+    "authenticationType": "jwt",
+    "baseName": "luulpos",
+    "buildTool": "maven",
+    "cacheProvider": "ehcache",
+    "clientFramework": "react",
+    "clientPackageManager": "npm",
+    "useSass": true,
+    "dtoSuffix": "DTO",
+    "serverPort": "8080",
+    "jhipsterVersion": "5.7.0",
+    "skipUserManagement": false,
+    "jwtSecretKey": "NTYwNTBlMWI0MGVjNmVhN2M4MDY4NTI0YmJiNWQyOWFkNThhMzg4ZjlhNzcwZWI0ODMxMjczNDBiY2UwMDdlY2E1YWE3ZWU0MmQzNzg3M2ZkZjE2ZjdiNjhkYzc4MjkxMTkyZDdlMjViMGY4MGNiZDNkMGI1NGE0YTZhZjJjMDE=",
+    "otherModules": [],
+    "herokuAppName": "luulpos",
+    "herokuDeployType": "git"
+  },
+  "entities": []
+}

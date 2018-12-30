@@ -1,0 +1,75 @@
+{
+    "name": "OrdersLine",
+    "fields": [
+        {
+            "fieldName": "ordersLineName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "ordersLineValue",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "ordersLinePrice",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "ordersLineDescription",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "thumbnailPhoto",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "fullPhoto",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "fullPhotoUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "thumbnailPhotoUrl",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "orders",
+            "otherEntityName": "orders",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "ordersLineVariants",
+            "otherEntityName": "ordersLineVariant",
+            "otherEntityRelationshipName": "ordersLine"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "product",
+            "otherEntityName": "product",
+            "otherEntityField": "productName"
+        }
+    ],
+    "changelogDate": "20181208032929",
+    "entityTableName": "orders_line",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

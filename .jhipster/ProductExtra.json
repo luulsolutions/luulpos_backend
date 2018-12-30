@@ -1,0 +1,53 @@
+{
+    "name": "ProductExtra",
+    "fields": [
+        {
+            "fieldName": "extraName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "extraValue",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "fullPhoto",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "fullPhotoUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "thumbnailPhoto",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "thumbnailPhotoUrl",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "product",
+            "otherEntityName": "product",
+            "otherEntityField": "productName"
+        }
+    ],
+    "changelogDate": "20181208032922",
+    "entityTableName": "product_extra",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

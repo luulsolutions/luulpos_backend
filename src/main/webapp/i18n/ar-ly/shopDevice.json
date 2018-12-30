@@ -1,0 +1,25 @@
+{
+  "luulposApp": {
+    "shopDevice": {
+      "home": {
+        "title": "Shop Devices",
+        "createLabel": "Create a new Shop Device",
+        "createOrEditLabel": "Create or edit a Shop Device",
+        "search": "Search for Shop Device"
+      },
+      "created": "A new Shop Device is created with identifier {{ param }}",
+      "updated": "A Shop Device is updated with identifier {{ param }}",
+      "deleted": "A Shop Device is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Shop Device {{ id }}?"
+      },
+      "detail": {
+        "title": "Shop Device"
+      },
+      "deviceName": "Device Name",
+      "deviceModel": "Device Model",
+      "registeredDate": "Registered Date",
+      "shop": "Shop"
+    }
+  }
+}

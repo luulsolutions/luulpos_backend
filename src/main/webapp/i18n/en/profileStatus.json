@@ -1,0 +1,10 @@
+{
+  "luulposApp": {
+    "ProfileStatus": {
+      "null": "",
+      "ACTIVE": "ACTIVE",
+      "SUSPENDED": "SUSPENDED",
+      "IN_ACTIVE": "IN_ACTIVE"
+    }
+  }
+}

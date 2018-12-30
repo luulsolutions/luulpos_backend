@@ -1,0 +1,29 @@
+{
+  "luulposApp": {
+    "productCategory": {
+      "home": {
+        "title": "Product Categories",
+        "createLabel": "Create a new Product Category",
+        "createOrEditLabel": "Create or edit a Product Category",
+        "search": "Search for Product Category"
+      },
+      "created": "A new Product Category is created with identifier {{ param }}",
+      "updated": "A Product Category is updated with identifier {{ param }}",
+      "deleted": "A Product Category is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Product Category {{ id }}?"
+      },
+      "detail": {
+        "title": "Product Category"
+      },
+      "category": "Category",
+      "description": "Description",
+      "imageFull": "Image Full",
+      "imageFullUrl": "Image Full Url",
+      "imageThumb": "Image Thumb",
+      "imageThumbUrl": "Image Thumb Url",
+      "shop": "Shop",
+      "products": "Products"
+    }
+  }
+}

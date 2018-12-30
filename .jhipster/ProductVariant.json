@@ -1,0 +1,60 @@
+{
+    "name": "ProductVariant",
+    "fields": [
+        {
+            "fieldName": "variantName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "percentage",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "fullPhoto",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "fullPhotoUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "thumbnailPhoto",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "thumbnailPhotoUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "price",
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "product",
+            "otherEntityName": "product",
+            "otherEntityField": "productName"
+        }
+    ],
+    "changelogDate": "20181208032921",
+    "entityTableName": "product_variant",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

@@ -1,0 +1,44 @@
+{
+    "name": "EmailBalancer",
+    "fields": [
+        {
+            "fieldName": "relayId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "relayPassword",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "startingCount",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "endingCount",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "provider",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "relayPort",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "enabled",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20181208032925",
+    "entityTableName": "email_balancer",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

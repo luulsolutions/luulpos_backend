@@ -1,0 +1,598 @@
+
+/**  ENUMS START */
+
+enum ShopAccountType {
+    TRIAL_ACCOUNT,
+    SILVER_ACCOUNT,
+    GOLD_ACCOUNT
+}
+
+enum PaymentStatus {
+	PENDING,
+	PAID,
+	CANCELLED,
+	REFUNDED,
+	FAILED
+}
+
+enum ConfigType {
+    STRING,
+    BOOLEAN,
+    NUMBER,
+    DATE,
+    FILE,
+    OBJECT,
+    ARRAY,
+    GEO_POINT
+   
+}
+
+enum EmailType {
+        WELCOME,
+        PASSWORD_RESET,
+        VOTE_NOTIFICATION,
+        VERIFICATION,
+        REMINDER,
+        TERMINATION,
+        SUSPENSION,
+        BLACKLIST,
+        MARKETING,
+        ALERT     
+}
+
+
+enum ProfileType {
+    SYSTEM_MANAGER,
+    COMPANY_MANAGER,
+    SHOP_MANAGER,
+    EMPLOYEE,
+    CUSTOMER,
+    SUPPLIER,
+    MANAGEMENT_CEO,
+    MANAGEMENT_OTHER,
+    ACCOUNTANT
+}
+
+enum Gender {
+    MALE,
+    FEMALE
+}
+
+enum ProfileStatus {
+    ACTIVE,
+    SUSPENDED,
+    IN_ACTIVE
+}
+
+enum SuspensionType {     
+    BANNED_FOR_LIFE,
+    BANNED_TEMPORARILY,   
+    DELETED_BY_USER, 
+    DELETED_BY_ADMIN, 
+    TEMP_DEACTIVATION_BY_USER,
+    UNDER_INVESTIGATION,  
+    NONE   
+}
+
+enum OrderStatus {
+	INCOMPLETE,
+	COMPLETED,
+	PENDING,
+	READY,
+	CANCELLED,
+	REFUNDED
+}
+
+/**  ENUMS END */
+
+/**  Entities START */
+
+
+entity Company {
+    companyName String required,
+    description String ,
+    note String,
+    companyLogo ImageBlob,
+    companyLogoUrl String,
+    active Boolean
+   
+}
+
+
+entity Shop {
+    shopName String required,
+    shopAccountType ShopAccountType,
+    approvalDate ZonedDateTime,
+    address String,
+    email String,
+    description String
+    note String,
+    landland String,
+    mobile String,
+    createdDate ZonedDateTime,
+    shopLogo ImageBlob,
+    shopLogoUrl String,
+    active Boolean,
+    currency String
+}
+
+
+
+entity ShopSection {
+   sectionName String,
+   description String,
+   surchargePercentage Integer,
+   surchargeFlatAmount BigDecimal,
+   usePercentage Boolean
+  
+}
+
+entity SectionTable {
+   tableNumber Integer,
+   description String
+  
+}
+
+entity SystemEventsHistory {
+	eventName String required,
+	eventDate ZonedDateTime,
+	eventApi String,
+	eventNote String,
+	eventEntityName String,
+	eventEntityId Long
+	
+}
+
+entity Product {
+    
+    productName String required maxlength(30),
+    productDescription String maxlength(99),
+    price BigDecimal,
+    quantity Integer required,
+    productImageFull ImageBlob,
+    productImageFullUrl String,
+    productImageThumb ImageBlob,
+    productImageThumbUrl String,
+    dateCreated ZonedDateTime,
+    barcode String,
+    serialCode String,
+    priorityPosition Integer,
+    active Boolean,
+    isVariantProduct Boolean
+    
+}
+
+entity ProductCategory {
+    category String,
+    description String,
+    imageFull ImageBlob,
+    imageFullUrl String,
+    imageThumb ImageBlob,
+    imageThumbUrl String
+   
+}
+
+entity ProductVariant {
+    variantName String,
+    description String,
+    percentage Float,
+    fullPhoto ImageBlob,
+    fullPhotoUrl String,
+    thumbnailPhoto ImageBlob,
+    thumbnailPhotoUrl String,
+    price BigDecimal required
+}
+
+entity ProductExtra {
+    extraName String,
+    description String,
+    extraValue Float,
+    fullPhoto ImageBlob,
+    fullPhotoUrl String,
+    thumbnailPhoto ImageBlob,
+    thumbnailPhotoUrl String
+    
+}
+
+entity ProductType {
+	productType String required,
+	productTypeDescription String
+}
+
+
+
+
+
+entity SystemConfig {
+    key String,
+    value String,
+    configurationType ConfigType,
+    note String,
+    enabled Boolean
+}
+
+
+entity EmailBalancer {
+    relayId String,
+    relayPassword String,
+    startingCount Integer,
+    endingCount Integer,
+    provider String,
+    relayPort Integer,
+    enabled Boolean
+   
+}
+
+
+entity Profile {
+   firstName String required,
+   lastName String required,
+   email String required,
+   userType ProfileType required,
+   dateOfBirth LocalDate,
+   gender Gender,
+   registerationDate ZonedDateTime,
+   lastAccess ZonedDateTime,
+   profileStatus ProfileStatus,
+   telephone String,
+   mobile String,
+   hourlyPayRate BigDecimal,
+   thumbnailPhoto ImageBlob,
+   thumbnailPhotoUrl String,
+   fullPhoto ImageBlob,
+   fullPhotoUrl String,
+   active Boolean,
+   shopChangeId Long
+}
+
+entity EmployeeTimesheet {
+	checkinTime ZonedDateTime,
+	checkOutTime ZonedDateTime,
+	regularHoursWorked Integer,
+	overTimeHoursWorked Integer,
+	pay BigDecimal
+}
+
+
+entity Orders {
+	description String,
+	customerName String,
+	totalPrice BigDecimal required,
+	quantity Integer required,
+	discountPercentage Float,
+    discountAmount BigDecimal,
+    taxPercentage Float,
+    taxAmount BigDecimal,
+    orderStatus OrderStatus,
+    note String,
+    orderDate ZonedDateTime,
+    isVariantOrder Boolean
+}
+
+entity OrdersLine {
+	ordersLineName String required,
+	ordersLineValue String required,
+	ordersLinePrice Float,
+	ordersLineDescription String,
+	thumbnailPhoto ImageBlob,
+	fullPhoto ImageBlob,
+    fullPhotoUrl String,
+	thumbnailPhotoUrl String
+    
+}
+entity OrdersLineVariant {
+ variantName String,
+ variantValue String,
+    description String,
+    percentage Float,
+    fullPhoto ImageBlob,
+    fullPhotoUrl String,
+    thumbnailPhoto ImageBlob,
+    thumbnailPhotoUrl String,
+    price BigDecimal required
+    
+ }
+
+entity OrdersLineExtra {
+	ordersLineExtraName String required,
+	ordersLineExtraValue String required,
+	ordersLineExtraPrice Float,
+	ordersOptionDescription String,
+	fullPhoto ImageBlob,
+    fullPhotoUrl String,
+	thumbnailPhoto ImageBlob,
+	thumbnailPhotoUrl String
+   
+	
+}
+
+entity Discount {
+	description String required,
+	percentage Float required,
+	amount BigDecimal required,
+	active Boolean
+	
+}
+
+entity Tax {
+	description String required,
+	percentage Float required,
+	amount BigDecimal required,
+	active Boolean
+}
+
+
+
+entity PaymentMethod {
+	paymentMethod String required,
+	description String,
+	active Boolean
+}
+
+
+entity SuspensionHistory {
+   suspendedDate ZonedDateTime,
+   suspensionType SuspensionType,
+   suspendedReason String,
+   resolutionNote String,
+   unsuspensionDate ZonedDateTime
+  
+}
+
+entity ShopDevice {
+   deviceName String,
+   deviceModel String,
+   registeredDate ZonedDateTime
+  
+}
+
+entity PaymentMethodConfig {
+    key String,
+    value String,
+    note String,
+    enabled Boolean
+}
+
+entity Payment {
+	paymentDate ZonedDateTime,
+	paymentProvider String,
+	amount BigDecimal,
+	paymentStatus PaymentStatus,
+	curency String,
+	customerName String	
+}
+
+entity ShopChange {
+    change String,
+    changedEntity String,
+    note String,
+    changeDate ZonedDateTime
+    
+}
+
+
+
+
+
+/**  Entities END */
+
+
+/**  Relationships START */
+
+relationship ManyToOne  {
+   Payment{shop(shopName)} to Shop
+
+}
+
+relationship ManyToOne  {
+   Payment{processedBy(firstName)} to Profile
+
+}
+
+relationship ManyToOne  {
+   Payment{paymentMethod(paymentMethod)} to PaymentMethod
+
+}
+
+relationship ManyToOne  {
+   Payment{order(description)} to Orders
+
+}
+
+relationship OneToMany  {
+   Orders{ordersLines(ordersLineName)} to OrdersLine
+
+}
+
+
+
+relationship ManyToOne  {
+   OrdersLine{product(productName)} to Product
+
+}
+
+relationship OneToMany  {
+   OrdersLine{ordersLineVariants(variantName)} to OrdersLineVariant
+
+}
+
+relationship OneToMany  {
+   OrdersLineVariant{ordersLineExtras(ordersLineExtraName)} to OrdersLineExtra
+
+}
+
+
+
+relationship ManyToOne  {
+   Orders{paymentMethod(paymentMethod)} to PaymentMethod
+
+}
+
+relationship ManyToOne  {
+   Product{productTypes(productType)} to ProductType
+
+}
+
+
+relationship ManyToOne  {
+   Orders{soldBy(firstName)} to Profile
+
+}
+
+relationship ManyToOne  {
+   Orders{preparedBy(firstName)} to Profile
+
+}
+
+relationship ManyToOne  {
+   Shop{company(companyName)} to Company
+
+}
+
+relationship ManyToOne  {
+   Product{shop(shopName)} to Shop
+
+}
+
+relationship ManyToOne  {
+   ShopDevice{shop(shopName)} to Shop
+
+}
+
+relationship ManyToOne  {
+   Orders{shopDevice(deviceName)} to ShopDevice
+
+}
+
+relationship ManyToOne  {
+   ShopSection{shop(shopName)} to Shop
+
+}
+
+
+
+relationship ManyToOne {
+     Product { discounts(description) } to Discount {product(productName)}
+}
+
+relationship ManyToOne {
+     Product { taxes(description) } to Tax {product(productName)} 
+}
+
+
+relationship OneToMany  {
+   Product{variants(variantName)} to ProductVariant{product(productName)}
+
+}
+
+relationship OneToMany  {
+   Product{extras(extraName)} to ProductExtra{product(productName)}
+
+}
+
+
+relationship ManyToOne  {
+   Product{category(category)} to ProductCategory{products(productName)}
+
+}
+
+relationship ManyToOne  {
+  Orders{sectionTable(tableNumber)} to  SectionTable 
+
+}
+
+relationship ManyToOne  {
+   SectionTable{shopSections(sectionName)} to ShopSection
+
+}
+
+relationship OneToOne  {
+   Profile{user(firstName)} to User
+
+}
+relationship ManyToOne  {
+   EmployeeTimesheet{profile(firstName)} to Profile
+
+}
+
+relationship ManyToOne  {
+   EmployeeTimesheet{shop(shopName)} to Shop
+
+}
+
+
+relationship ManyToOne {
+    Profile { shop(shopName) } to Shop { profiles(firstName) }
+}
+
+relationship ManyToOne {
+    ProductCategory { shop(shopName) } to Shop { productCategories(category) }
+}
+
+relationship ManyToOne {
+    ProductType { shop(shopName) } to Shop { productTypes(productType) }
+}
+
+relationship ManyToOne {
+    SystemConfig { shop(shopName) } to Shop { systemConfigs(key) }
+}
+
+relationship ManyToOne  {
+   Shop{approvedBy(firstName)} to Profile
+ 
+}
+
+
+relationship ManyToOne {
+    Discount { shop(shopName) } to Shop { discounts(description) }
+}
+
+relationship ManyToOne {
+    Tax { shop(shopName) } to Shop { taxes(description) }
+}
+
+relationship ManyToOne  {
+   SystemEventsHistory{triggedBy(firstName)} to Profile
+ 
+}
+
+relationship ManyToOne  {
+   SuspensionHistory{profile(firstName)} to Profile
+}
+
+relationship ManyToOne  {
+   SuspensionHistory{suspendedBy(firstName)} to Profile
+}
+
+relationship ManyToOne  {
+   PaymentMethod{shop(shopName)} to Shop
+
+}
+
+relationship ManyToOne  {
+   PaymentMethodConfig{paymentMethod(paymentMethod)} to PaymentMethod
+
+}
+
+relationship ManyToOne  {
+   ShopChange{shop(shopName)} to Shop
+
+}
+
+relationship ManyToOne  {
+   ShopChange {changedBy(firstName)} to Profile
+
+}
+
+relationship ManyToOne  {
+   Orders{shop(shopName)} to Shop
+
+}
+
+
+/**  Relationships END */
+paginate Product,Company,Shop,ProductCategory,ProductVariant,SystemEventsHistory,SystemConfig,EmailBalancer,Profile,Orders,Discount,Tax,PaymentMethod,SuspensionHistory,ProductExtra,ProductType,OrdersLine,OrdersLineVariant,OrdersLineExtra,EmployeeTimesheet,ShopSection,SectionTable,ShopDevice,PaymentMethodConfig,ShopChange,Payment with pagination
+dto Product,Company,Shop,ProductCategory,ProductVariant,SystemEventsHistory,SystemConfig,EmailBalancer,Profile,Orders,Discount,Tax,PaymentMethod,SuspensionHistory,ProductExtra,ProductType,OrdersLine,OrdersLineVariant,OrdersLineExtra,EmployeeTimesheet,ShopSection,SectionTable,ShopDevice,PaymentMethodConfig,ShopChange,Payment  with mapstruct
+service  Product,Company,Shop,ProductCategory,ProductVariant,SystemEventsHistory,SystemConfig,EmailBalancer,Profile,Orders,Discount,Tax,PaymentMethod,SuspensionHistory,ProductExtra,ProductType,OrdersLine,OrdersLineVariant,OrdersLineExtra,EmployeeTimesheet,ShopSection,SectionTable,ShopDevice,PaymentMethodConfig,ShopChange,Payment   with serviceClass
+search Product,Company,Shop,ProductCategory,ProductVariant,SystemEventsHistory,SystemConfig,EmailBalancer,Profile,Orders,Discount,Tax,PaymentMethod,SuspensionHistory,ProductExtra,ProductType,OrdersLine,OrdersLineVariant,OrdersLineExtra,EmployeeTimesheet,ShopSection,SectionTable,ShopDevice,PaymentMethodConfig,ShopChange,Payment   with elasticsearch
+filter Product,Company,Shop,ProductCategory,ProductVariant,SystemEventsHistory,SystemConfig,EmailBalancer,Profile,Orders,Discount,Tax,PaymentMethod,SuspensionHistory,ProductExtra,ProductType,OrdersLine,OrdersLineVariant,OrdersLineExtra,EmployeeTimesheet,ShopSection,SectionTable,ShopDevice,PaymentMethodConfig,ShopChange,Payment

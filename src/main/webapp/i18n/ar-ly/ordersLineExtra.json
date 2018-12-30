@@ -1,0 +1,30 @@
+{
+  "luulposApp": {
+    "ordersLineExtra": {
+      "home": {
+        "title": "Orders Line Extras",
+        "createLabel": "Create a new Orders Line Extra",
+        "createOrEditLabel": "Create or edit a Orders Line Extra",
+        "search": "Search for Orders Line Extra"
+      },
+      "created": "A new Orders Line Extra is created with identifier {{ param }}",
+      "updated": "A Orders Line Extra is updated with identifier {{ param }}",
+      "deleted": "A Orders Line Extra is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Orders Line Extra {{ id }}?"
+      },
+      "detail": {
+        "title": "Orders Line Extra"
+      },
+      "ordersLineExtraName": "Orders Line Extra Name",
+      "ordersLineExtraValue": "Orders Line Extra Value",
+      "ordersLineExtraPrice": "Orders Line Extra Price",
+      "ordersOptionDescription": "Orders Option Description",
+      "fullPhoto": "Full Photo",
+      "fullPhotoUrl": "Full Photo Url",
+      "thumbnailPhoto": "Thumbnail Photo",
+      "thumbnailPhotoUrl": "Thumbnail Photo Url",
+      "ordersLineVariant": "Orders Line Variant"
+    }
+  }
+}

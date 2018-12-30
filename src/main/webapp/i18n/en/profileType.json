@@ -1,0 +1,16 @@
+{
+  "luulposApp": {
+    "ProfileType": {
+      "null": "",
+      "SYSTEM_MANAGER": "SYSTEM_MANAGER",
+      "COMPANY_MANAGER": "COMPANY_MANAGER",
+      "SHOP_MANAGER": "SHOP_MANAGER",
+      "EMPLOYEE": "EMPLOYEE",
+      "CUSTOMER": "CUSTOMER",
+      "SUPPLIER": "SUPPLIER",
+      "MANAGEMENT_CEO": "MANAGEMENT_CEO",
+      "MANAGEMENT_OTHER": "MANAGEMENT_OTHER",
+      "ACCOUNTANT": "ACCOUNTANT"
+    }
+  }
+}

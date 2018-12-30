@@ -1,0 +1,30 @@
+{
+  "luulposApp": {
+    "productVariant": {
+      "home": {
+        "title": "Product Variants",
+        "createLabel": "Create a new Product Variant",
+        "createOrEditLabel": "Create or edit a Product Variant",
+        "search": "Search for Product Variant"
+      },
+      "created": "A new Product Variant is created with identifier {{ param }}",
+      "updated": "A Product Variant is updated with identifier {{ param }}",
+      "deleted": "A Product Variant is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Product Variant {{ id }}?"
+      },
+      "detail": {
+        "title": "Product Variant"
+      },
+      "variantName": "Variant Name",
+      "description": "Description",
+      "percentage": "Percentage",
+      "fullPhoto": "Full Photo",
+      "fullPhotoUrl": "Full Photo Url",
+      "thumbnailPhoto": "Thumbnail Photo",
+      "thumbnailPhotoUrl": "Thumbnail Photo Url",
+      "price": "Price",
+      "product": "Product"
+    }
+  }
+}

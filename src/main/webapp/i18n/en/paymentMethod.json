@@ -1,0 +1,25 @@
+{
+  "luulposApp": {
+    "paymentMethod": {
+      "home": {
+        "title": "Payment Methods",
+        "createLabel": "Create a new Payment Method",
+        "createOrEditLabel": "Create or edit a Payment Method",
+        "search": "Search for Payment Method"
+      },
+      "created": "A new Payment Method is created with identifier {{ param }}",
+      "updated": "A Payment Method is updated with identifier {{ param }}",
+      "deleted": "A Payment Method is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Payment Method {{ id }}?"
+      },
+      "detail": {
+        "title": "Payment Method"
+      },
+      "paymentMethod": "Payment Method",
+      "description": "Description",
+      "active": "Active",
+      "shop": "Shop"
+    }
+  }
+}

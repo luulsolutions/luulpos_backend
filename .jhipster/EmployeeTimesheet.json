@@ -1,0 +1,49 @@
+{
+    "name": "EmployeeTimesheet",
+    "fields": [
+        {
+            "fieldName": "checkinTime",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "checkOutTime",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "regularHoursWorked",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "overTimeHoursWorked",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "pay",
+            "fieldType": "BigDecimal"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "profile",
+            "otherEntityName": "profile",
+            "otherEntityField": "firstName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "shop",
+            "otherEntityName": "shop",
+            "otherEntityField": "shopName"
+        }
+    ],
+    "changelogDate": "20181208032927",
+    "entityTableName": "employee_timesheet",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}
