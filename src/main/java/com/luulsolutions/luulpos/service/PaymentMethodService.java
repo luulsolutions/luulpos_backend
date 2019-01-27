@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
@@ -104,5 +105,14 @@ public class PaymentMethodService {
         log.debug("Request to search for a page of PaymentMethods for query {}", query);
         return paymentMethodSearchRepository.search(queryStringQuery(query), pageable)
             .map(paymentMethodMapper::toDto);
+    }
+    
+    @Transactional(readOnly = true)
+    public List<PaymentMethodDTO> findAllByShopId(Long shopId) {
+        log.debug("Request to get all PaymentMethods");
+        List<PaymentMethod> paymentMethodList = paymentMethodRepository.findAllByShopId(shopId);
+           return paymentMethodMapper.toDto(paymentMethodList);
+            
+            
     }
 }

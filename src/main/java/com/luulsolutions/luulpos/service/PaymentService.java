@@ -38,6 +38,19 @@ public class PaymentService {
         this.paymentSearchRepository = paymentSearchRepository;
     }
 
+
+	public Page<PaymentDTO> findAllByOrderId(Pageable pageable, Long orderId) {
+		log.debug("Request to get all findAllByOrderId");
+        return paymentRepository.findAllByOrderId(pageable,orderId)
+            .map(paymentMapper::toDto);
+	}
+	
+	public Page<PaymentDTO> findAllByShopId(Pageable pageable, Long shopId) {
+		log.debug("Request to get all findAllByOrderId");
+        return paymentRepository.findAllByShopId(pageable,shopId)
+            .map(paymentMapper::toDto);
+	}
+    
     /**
      * Save a payment.
      *

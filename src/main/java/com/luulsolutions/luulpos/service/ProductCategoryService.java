@@ -18,7 +18,7 @@ import java.util.Optional;
 import static org.elasticsearch.index.query.QueryBuilders.*;
 
 /**
- * Service Implementation for managing ProductCategory.
+ * Service Implementation for managing ProductCategory. 
  */
 @Service
 @Transactional
@@ -105,4 +105,11 @@ public class ProductCategoryService {
         return productCategorySearchRepository.search(queryStringQuery(query), pageable)
             .map(productCategoryMapper::toDto);
     }
+    
+    @Transactional(readOnly = true)
+	public Page<ProductCategoryDTO> findAllProductCategoryByShopId(Pageable pageable, Long shopId) {
+		log.debug("Request to findAllProductCategoryByShopId");
+        return productCategoryRepository.findAllByShopId(pageable, shopId)
+            .map(productCategoryMapper::toDto);
+	}
 }

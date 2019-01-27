@@ -2,16 +2,20 @@ package com.luulsolutions.luulpos.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.luulsolutions.luulpos.service.DiscountService;
+import com.luulsolutions.luulpos.service.ShopChangeService;
 import com.luulsolutions.luulpos.web.rest.errors.BadRequestAlertException;
 import com.luulsolutions.luulpos.web.rest.util.HeaderUtil;
 import com.luulsolutions.luulpos.web.rest.util.PaginationUtil;
 import com.luulsolutions.luulpos.service.dto.DiscountDTO;
+import com.luulsolutions.luulpos.utils.CommonUtils;
 import com.luulsolutions.luulpos.service.dto.DiscountCriteria;
 import com.luulsolutions.luulpos.service.DiscountQueryService;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -42,11 +46,30 @@ public class DiscountResource {
     private final DiscountService discountService;
 
     private final DiscountQueryService discountQueryService;
+    
+    @Autowired
+    ShopChangeService shopChangeService;
 
     public DiscountResource(DiscountService discountService, DiscountQueryService discountQueryService) {
         this.discountService = discountService;
         this.discountQueryService = discountQueryService;
     }
+
+   
+
+    /**
+    * GET  /discounts/count : count all the discounts.
+    *
+    * @param criteria the criterias which the requested entities should match
+    * @return the ResponseEntity with status 200 (OK) and the count in body
+    */
+    @GetMapping("/discounts/count")
+    @Timed
+    public ResponseEntity<Long> countDiscounts(DiscountCriteria criteria) {
+        log.debug("REST request to count Discounts by criteria: {}", criteria);
+        return ResponseEntity.ok().body(discountQueryService.countByCriteria(criteria));
+    }
+
 
     /**
      * POST  /discounts : Create a new discount.
@@ -63,6 +86,7 @@ public class DiscountResource {
             throw new BadRequestAlertException("A new discount cannot already have an ID", ENTITY_NAME, "idexists");
         }
         DiscountDTO result = discountService.save(discountDTO);
+        CommonUtils.saveShopChange(shopChangeService, discountDTO.getShopId(), "Discount", "New Discount created", discountDTO.getShopShopName()); 
         return ResponseEntity.created(new URI("/api/discounts/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -85,6 +109,7 @@ public class DiscountResource {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
         DiscountDTO result = discountService.save(discountDTO);
+        CommonUtils.saveShopChange(shopChangeService, discountDTO.getShopId(), "Discount", "Existing Discount updatede", discountDTO.getShopShopName()); 
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, discountDTO.getId().toString()))
             .body(result);
@@ -94,29 +119,16 @@ public class DiscountResource {
      * GET  /discounts : get all the discounts.
      *
      * @param pageable the pagination information
-     * @param criteria the criterias which the requested entities should match
      * @return the ResponseEntity with status 200 (OK) and the list of discounts in body
      */
     @GetMapping("/discounts")
     @Timed
-    public ResponseEntity<List<DiscountDTO>> getAllDiscounts(DiscountCriteria criteria, Pageable pageable) {
-        log.debug("REST request to get Discounts by criteria: {}", criteria);
-        Page<DiscountDTO> page = discountQueryService.findByCriteria(criteria, pageable);
+    public ResponseEntity<List<DiscountDTO>> getAllDiscounts(Pageable pageable) {
+        log.debug("REST request to get a page of Discounts");
+        Pageable pageable2 =  PageRequest.of(pageable.getPageNumber(),2000);
+        Page<DiscountDTO> page = discountService.findAll(pageable2);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/discounts");
-        return ResponseEntity.ok().headers(headers).body(page.getContent());
-    }
-
-    /**
-    * GET  /discounts/count : count all the discounts.
-    *
-    * @param criteria the criterias which the requested entities should match
-    * @return the ResponseEntity with status 200 (OK) and the count in body
-    */
-    @GetMapping("/discounts/count")
-    @Timed
-    public ResponseEntity<Long> countDiscounts(DiscountCriteria criteria) {
-        log.debug("REST request to count Discounts by criteria: {}", criteria);
-        return ResponseEntity.ok().body(discountQueryService.countByCriteria(criteria));
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
     /**
@@ -143,7 +155,11 @@ public class DiscountResource {
     @Timed
     public ResponseEntity<Void> deleteDiscount(@PathVariable Long id) {
         log.debug("REST request to delete Discount : {}", id);
+        Optional<DiscountDTO> discountDTO = discountService.findOne(id);
+        long shopId = discountDTO.get().getShopId();
+        String shopName = discountDTO.get().getShopShopName();
         discountService.delete(id);
+        CommonUtils.saveShopChange(shopChangeService, shopId, "Discount", "Existing Discount deleted", shopName); 
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 
@@ -163,5 +179,4 @@ public class DiscountResource {
         HttpHeaders headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page, "/api/_search/discounts");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
-
 }

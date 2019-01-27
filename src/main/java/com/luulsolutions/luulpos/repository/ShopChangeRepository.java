@@ -11,5 +11,6 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface ShopChangeRepository extends JpaRepository<ShopChange, Long>, JpaSpecificationExecutor<ShopChange> {
+	ShopChange findFirstByShopIdOrderByIdDesc(Long shopId);
 
 }

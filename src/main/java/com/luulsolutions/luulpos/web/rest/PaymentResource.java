@@ -47,6 +47,25 @@ public class PaymentResource {
         this.paymentQueryService = paymentQueryService;
     }
 
+    
+    @GetMapping("/payments-by-order-id/{orderId}")
+    @Timed
+    public ResponseEntity<List<PaymentDTO>> getAllPaymentsByOrderId(Pageable pageable,@PathVariable Long orderId) {
+        log.debug("REST request to get a page of Payments");
+        Page<PaymentDTO> page = paymentService.findAllByOrderId(pageable,orderId);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/payments-by-order-id");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+    
+    @GetMapping("/payments-by-shop-id/{shopId}")
+    @Timed
+    public ResponseEntity<List<PaymentDTO>> getAllPaymentsByShopId(Pageable pageable,@PathVariable Long shopId) {
+        log.debug("REST request to get a page of Payments");
+        Page<PaymentDTO> page = paymentService.findAllByShopId(pageable,shopId);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/payments-by-shop-id");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
     /**
      * POST  /payments : Create a new payment.
      *

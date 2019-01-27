@@ -1,15 +1,31 @@
 version: '2'
 services:
     luulpos-app:
-        image: luulpos
+        image: luulsolutions/luulpos
         environment:
             - _JAVA_OPTIONS=-Xmx512m -Xms256m
             - SPRING_PROFILES_ACTIVE=prod,swagger
             - SPRING_DATASOURCE_URL=jdbc:mysql://luulpos-mysql:3306/luulpos?useUnicode=true&characterEncoding=utf8&useSSL=false
-            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+            - JHIPSTER_SLEEP=30 # gives time for the database to boot before the application
             - SPRING_DATA_JEST_URI=http://luulpos-elasticsearch:9200
+            - AWS_S3_ENDPOINT=https://s3.eu-west-1.amazonaws.com
+            - AWS_S3_ACCESS_KEY=add_here_your_s3_access_key
+            - AWS_S3_SECRET_KEY=add_here_your_s3_secret_key
+            - AWS_S3_BUCKET_NAME=luulpos
+            - MYSQL_USERNAME=root
+            - MYSQL_PASSWORD=1234
+            - MAIL_HOST=smtp.gmail.com
+            - MAIL_PORT=587
+            - MAIL_USERNAME=your_gmail@gmail.com
+            - MAIL_PASSWORD=add_here_your_gmail_password
+            - MAIL_PROTOCOL=smtp
+            - MAIL_SSL_TRUST=smtp.gmail.com
         ports:
             - 8080:8080
+            - 587:587
+        depends_on:
+            - luulpos-mysql
+            - luulpos-elasticsearch
     luulpos-mysql:
         extends:
             file: mysql.yml

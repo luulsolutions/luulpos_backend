@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
@@ -104,5 +105,12 @@ public class ProductExtraService {
         log.debug("Request to search for a page of ProductExtras for query {}", query);
         return productExtraSearchRepository.search(queryStringQuery(query), pageable)
             .map(productExtraMapper::toDto);
+    }
+    
+    @Transactional(readOnly = true)
+    public List<ProductExtraDTO> findAllByProductId(Long productId) {
+        log.debug("Request to get all findAllByProductId");
+         List <ProductExtra> productExtraList = productExtraRepository.findAllByProductId(productId);
+         return productExtraMapper.toDto(productExtraList);
     }
 }

@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
@@ -38,6 +39,15 @@ public class ShopService {
         this.shopSearchRepository = shopSearchRepository;
     }
 
+    
+
+    @Transactional(readOnly = true)
+    public List<ShopDTO> findAllByCompanyId(Long companyId) {
+        log.debug("Request to get all findAllByCompanyId");
+        List<Shop>  shopsList = shopRepository.findAllByCompanyId(companyId);
+        return shopMapper.toDto(shopsList);
+    }
+    
     /**
      * Save a shop.
      *

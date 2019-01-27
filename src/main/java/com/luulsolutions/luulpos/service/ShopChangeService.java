@@ -105,4 +105,10 @@ public class ShopChangeService {
         return shopChangeSearchRepository.search(queryStringQuery(query), pageable)
             .map(shopChangeMapper::toDto);
     }
+    
+	public ShopChangeDTO findFirstByShopId(Long shopId) {
+		log.debug("Request to get all findAllByShopId");
+		ShopChange shopChange = shopChangeRepository.findFirstByShopIdOrderByIdDesc(shopId);
+        return shopChangeMapper.toDto(shopChange);
+	}
 }

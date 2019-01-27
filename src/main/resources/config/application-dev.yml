@@ -37,8 +37,8 @@ spring:
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:mysql://localhost:3306/luulpos?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false
-        username: root
-        password: 1234
+        username: ${MYSQL_USERNAME}
+        password: ${MYSQL_PASSWORD}
         hikari:
             auto-commit: false
             data-source-properties:
@@ -65,10 +65,16 @@ spring:
     liquibase:
         contexts: dev
     mail:
-        host: localhost
-        port: 25
-        username:
-        password:
+        host: ${MAIL_HOST}
+        port: ${MAIL_PORT}
+        username: ${MAIL_USERNAME}
+        password: ${MAIL_PASSWORD}
+        protocol: ${MAIL_PROTOCOL}
+        tls: true
+        properties.mail.smtp:
+            auth: true
+            starttls.enable: true
+            ssl.trust: ${MAIL_SSL_TRUST}
     messages:
         cache-duration: PT1S # 1 second, see the ISO 8601 standard
     thymeleaf:
@@ -76,6 +82,12 @@ spring:
 
 server:
     port: 8080
+    
+amazonProperties:
+  endpointUrl: ${AWS_S3_ENDPOINT}  # https://s3.eu-west-1.amazonaws.com
+  accessKey: ${AWS_S3_ACCESS_KEY} # before hand set you AWS S3 Access Key as Environment Variable
+  secretKey: ${AWS_S3_SECRET_KEY} # before hand set you AWS S3 Access Key as Environment Variable
+  bucketName: ${AWS_S3_BUCKET_NAME}  # S3 bucketName luulpos
 
 # ===================================================================
 # JHipster specific properties
@@ -133,4 +145,6 @@ jhipster:
 # https://www.jhipster.tech/common-application-properties/
 # ===================================================================
 
-# application:
+application:
+    auth-server:
+        register-url: http://localhost.com:8080/api/register

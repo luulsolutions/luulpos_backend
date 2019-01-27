@@ -2,16 +2,24 @@ package com.luulsolutions.luulpos.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.luulsolutions.luulpos.service.SectionTableService;
+import com.luulsolutions.luulpos.service.ShopChangeService;
+import com.luulsolutions.luulpos.service.ShopSectionService;
 import com.luulsolutions.luulpos.web.rest.errors.BadRequestAlertException;
 import com.luulsolutions.luulpos.web.rest.util.HeaderUtil;
 import com.luulsolutions.luulpos.web.rest.util.PaginationUtil;
 import com.luulsolutions.luulpos.service.dto.SectionTableDTO;
+import com.luulsolutions.luulpos.service.dto.ShopSectionDTO;
+import com.luulsolutions.luulpos.utils.CommonUtils;
 import com.luulsolutions.luulpos.service.dto.SectionTableCriteria;
+import com.luulsolutions.luulpos.domain.SectionTable;
+import com.luulsolutions.luulpos.repository.SectionTableRepository;
 import com.luulsolutions.luulpos.service.SectionTableQueryService;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -41,6 +49,15 @@ public class SectionTableResource {
     private final SectionTableService sectionTableService;
 
     private final SectionTableQueryService sectionTableQueryService;
+    
+    @Autowired
+    ShopChangeService shopChangeService;
+    
+    @Autowired
+    ShopSectionService shopSectionService;
+    
+    @Autowired
+    SectionTableRepository sectionTableRepository;
 
     public SectionTableResource(SectionTableService sectionTableService, SectionTableQueryService sectionTableQueryService) {
         this.sectionTableService = sectionTableService;
@@ -62,6 +79,8 @@ public class SectionTableResource {
             throw new BadRequestAlertException("A new sectionTable cannot already have an ID", ENTITY_NAME, "idexists");
         }
         SectionTableDTO result = sectionTableService.save(sectionTableDTO);
+        Optional <ShopSectionDTO> shopSection = shopSectionService.findOne(result.getShopSectionsId()); 
+        CommonUtils.saveShopChange(shopChangeService, shopSection.get().getShopId(), "SectionTable", "New SectionTable created", shopSection.get().getShopShopName()); 
         return ResponseEntity.created(new URI("/api/section-tables/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -84,6 +103,8 @@ public class SectionTableResource {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
         SectionTableDTO result = sectionTableService.save(sectionTableDTO);
+        Optional <ShopSectionDTO> shopSection = shopSectionService.findOne(result.getShopSectionsId()); 
+        CommonUtils.saveShopChange(shopChangeService, shopSection.get().getShopId(), "SectionTable", "Existing SectionTable updated", shopSection.get().getShopShopName());        
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, sectionTableDTO.getId().toString()))
             .body(result);
@@ -93,29 +114,16 @@ public class SectionTableResource {
      * GET  /section-tables : get all the sectionTables.
      *
      * @param pageable the pagination information
-     * @param criteria the criterias which the requested entities should match
      * @return the ResponseEntity with status 200 (OK) and the list of sectionTables in body
      */
     @GetMapping("/section-tables")
     @Timed
-    public ResponseEntity<List<SectionTableDTO>> getAllSectionTables(SectionTableCriteria criteria, Pageable pageable) {
-        log.debug("REST request to get SectionTables by criteria: {}", criteria);
-        Page<SectionTableDTO> page = sectionTableQueryService.findByCriteria(criteria, pageable);
+    public ResponseEntity<List<SectionTableDTO>> getAllSectionTables(Pageable pageable) {
+        log.debug("REST request to get a page of SectionTables");
+        Pageable pageable2 =  PageRequest.of(pageable.getPageNumber(),2000);
+        Page<SectionTableDTO> page = sectionTableService.findAll(pageable2);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/section-tables");
-        return ResponseEntity.ok().headers(headers).body(page.getContent());
-    }
-
-    /**
-    * GET  /section-tables/count : count all the sectionTables.
-    *
-    * @param criteria the criterias which the requested entities should match
-    * @return the ResponseEntity with status 200 (OK) and the count in body
-    */
-    @GetMapping("/section-tables/count")
-    @Timed
-    public ResponseEntity<Long> countSectionTables(SectionTableCriteria criteria) {
-        log.debug("REST request to count SectionTables by criteria: {}", criteria);
-        return ResponseEntity.ok().body(sectionTableQueryService.countByCriteria(criteria));
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
     /**
@@ -142,7 +150,11 @@ public class SectionTableResource {
     @Timed
     public ResponseEntity<Void> deleteSectionTable(@PathVariable Long id) {
         log.debug("REST request to delete SectionTable : {}", id);
+        SectionTable table = sectionTableRepository.getOne(id); 
+        String shopName = table.getShopSections().getSectionName();
+        long shopId = table.getShopSections().getId();
         sectionTableService.delete(id);
+        CommonUtils.saveShopChange(shopChangeService, shopId, "SectionTable", "Existing SectionTable deleted", shopName);        
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 
@@ -162,5 +174,20 @@ public class SectionTableResource {
         HttpHeaders headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page, "/api/_search/section-tables");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
+
+    /**
+    * GET  /section-tables/count : count all the sectionTables.
+    *
+    * @param criteria the criterias which the requested entities should match
+    * @return the ResponseEntity with status 200 (OK) and the count in body
+    */
+    @GetMapping("/section-tables/count")
+    @Timed
+    public ResponseEntity<Long> countSectionTables(SectionTableCriteria criteria) {
+        log.debug("REST request to count SectionTables by criteria: {}", criteria);
+        return ResponseEntity.ok().body(sectionTableQueryService.countByCriteria(criteria));
+    }
+
+ 
 
 }

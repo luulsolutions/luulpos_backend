@@ -44,7 +44,7 @@ notifications:
     on_start: false
 
 after_success:
-- docker login -u $DOCKER_USER -p $DOCKER_PASS
+- docker login -u $DOCKER_USER" -p $DOCKER_PASS
 - export TAG=latest
 - export IMAGE_NAME=luulsolutions/luulpos
 - docker tag luulpos $IMAGE_NAME:$TAG

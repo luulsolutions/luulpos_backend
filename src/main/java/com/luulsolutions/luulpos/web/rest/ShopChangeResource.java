@@ -162,5 +162,17 @@ public class ShopChangeResource {
         HttpHeaders headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page, "/api/_search/shop-changes");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
+    
+    @GetMapping("/shop-changes-by-shop-id/{shopId}")
+    @Timed
+    public ResponseEntity<Long> getLastShopChangeIdByShopId(@PathVariable Long shopId) {
+        log.debug("REST request to get a page of getLastShopChangeIdByShopId");
+        ShopChangeDTO shopChangeDTO = shopChangeService.findFirstByShopId(shopId);
+        Long lastRecord = 0L;
+        if (shopChangeDTO != null ) {
+        	lastRecord = shopChangeDTO.getId();
+        }
+        return new ResponseEntity<>(lastRecord, HttpStatus.OK);
+    }
 
 }

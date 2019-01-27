@@ -28,8 +28,8 @@ spring:
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:mysql://localhost:3306/luulpos?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false
-        username: root
-        password: 1234
+        username: ${MYSQL_USERNAME}
+        password: ${MYSQL_PASSWORD}
         hikari:
             auto-commit: false
             data-source-properties:
@@ -54,10 +54,16 @@ spring:
     liquibase:
         contexts: prod
     mail:
-        host: localhost
-        port: 25
-        username:
-        password:
+        host: ${MAIL_HOST}
+        port: ${MAIL_PORT}
+        username: ${MAIL_USERNAME}
+        password: ${MAIL_PASSWORD}
+        protocol: ${MAIL_PROTOCOL}
+        tls: true
+        properties.mail.smtp:
+            auth: true
+            starttls.enable: true
+            ssl.trust: ${MAIL_SSL_TRUST}
     thymeleaf:
         cache: true
 
@@ -82,10 +88,24 @@ spring:
 # ===================================================================
 server:
     port: 8080
+    # intall SSL certicate with the app
+     #ssl:
+         #key-store: /etc/letsencrypt/live/luulpos.org/keystore.p12 
+         #key-store-password: youkeystorepassword
+         #keyStoreType: PKCS12
+         #keyAlias: luulpos
+         #ciphers: TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 ,TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 ,TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 ,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_DHE_RSA_WITH_AES_128_CBC_SHA256,TLS_DHE_RSA_WITH_AES_128_CBC_SHA,TLS_DHE_RSA_WITH_AES_256_CBC_SHA256,TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_RSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_CBC_SHA256,TLS_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA,TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA,TLS_RSA_WITH_CAMELLIA_256_CBC_SHA,TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA,TLS_RSA_WITH_CAMELLIA_128_CBC_SHA
+         #enabled-protocols: TLSv1.2
     compression:
         enabled: true
         mime-types: text/html,text/xml,text/plain,text/css, application/javascript, application/json
         min-response-size: 1024
+
+amazonProperties:
+  endpointUrl: ${AWS_S3_ENDPOINT}  # https://s3.eu-west-1.amazonaws.com
+  accessKey: ${AWS_S3_ACCESS_KEY} # before hand set you AWS S3 Access Key as Environment Variable
+  secretKey: ${AWS_S3_SECRET_KEY} # before hand set you AWS S3 Access Key as Environment Variable
+  bucketName: ${AWS_S3_BUCKET_NAME}  # S3 bucketName luulpos
 
 # ===================================================================
 # JHipster specific properties
@@ -141,4 +161,6 @@ jhipster:
 # https://www.jhipster.tech/common-application-properties/
 # ===================================================================
 
-# application:
+application:
+    auth-server:
+        register-url: http://localhost:8080/api/register

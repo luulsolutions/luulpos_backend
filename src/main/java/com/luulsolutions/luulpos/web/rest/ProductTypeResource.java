@@ -2,16 +2,20 @@ package com.luulsolutions.luulpos.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.luulsolutions.luulpos.service.ProductTypeService;
+import com.luulsolutions.luulpos.service.ShopChangeService;
 import com.luulsolutions.luulpos.web.rest.errors.BadRequestAlertException;
 import com.luulsolutions.luulpos.web.rest.util.HeaderUtil;
 import com.luulsolutions.luulpos.web.rest.util.PaginationUtil;
 import com.luulsolutions.luulpos.service.dto.ProductTypeDTO;
+import com.luulsolutions.luulpos.utils.CommonUtils;
 import com.luulsolutions.luulpos.service.dto.ProductTypeCriteria;
 import com.luulsolutions.luulpos.service.ProductTypeQueryService;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -42,10 +46,27 @@ public class ProductTypeResource {
     private final ProductTypeService productTypeService;
 
     private final ProductTypeQueryService productTypeQueryService;
+    
+    @Autowired
+    ShopChangeService shopChangeService;
 
     public ProductTypeResource(ProductTypeService productTypeService, ProductTypeQueryService productTypeQueryService) {
         this.productTypeService = productTypeService;
         this.productTypeQueryService = productTypeQueryService;
+    }
+
+   
+    /**
+    * GET  /product-types/count : count all the productTypes.
+    *
+    * @param criteria the criterias which the requested entities should match
+    * @return the ResponseEntity with status 200 (OK) and the count in body
+    */
+    @GetMapping("/product-types/count")
+    @Timed
+    public ResponseEntity<Long> countProductTypes(ProductTypeCriteria criteria) {
+        log.debug("REST request to count ProductTypes by criteria: {}", criteria);
+        return ResponseEntity.ok().body(productTypeQueryService.countByCriteria(criteria));
     }
 
     /**
@@ -63,6 +84,7 @@ public class ProductTypeResource {
             throw new BadRequestAlertException("A new productType cannot already have an ID", ENTITY_NAME, "idexists");
         }
         ProductTypeDTO result = productTypeService.save(productTypeDTO);
+        CommonUtils.saveShopChange(shopChangeService, productTypeDTO.getShopId(), "ProductType", "New ProductType created", productTypeDTO.getShopShopName());     
         return ResponseEntity.created(new URI("/api/product-types/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -85,6 +107,7 @@ public class ProductTypeResource {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
         ProductTypeDTO result = productTypeService.save(productTypeDTO);
+        CommonUtils.saveShopChange(shopChangeService, productTypeDTO.getShopId(), "ProductType", "Existing ProductType updated", productTypeDTO.getShopShopName()); 
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, productTypeDTO.getId().toString()))
             .body(result);
@@ -94,29 +117,16 @@ public class ProductTypeResource {
      * GET  /product-types : get all the productTypes.
      *
      * @param pageable the pagination information
-     * @param criteria the criterias which the requested entities should match
      * @return the ResponseEntity with status 200 (OK) and the list of productTypes in body
      */
     @GetMapping("/product-types")
     @Timed
-    public ResponseEntity<List<ProductTypeDTO>> getAllProductTypes(ProductTypeCriteria criteria, Pageable pageable) {
-        log.debug("REST request to get ProductTypes by criteria: {}", criteria);
-        Page<ProductTypeDTO> page = productTypeQueryService.findByCriteria(criteria, pageable);
+    public ResponseEntity<List<ProductTypeDTO>> getAllProductTypes(Pageable pageable) {
+        log.debug("REST request to get a page of ProductTypes");
+        Pageable pageable2 =  PageRequest.of(pageable.getPageNumber(),2000);
+        Page<ProductTypeDTO> page = productTypeService.findAll(pageable2);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/product-types");
-        return ResponseEntity.ok().headers(headers).body(page.getContent());
-    }
-
-    /**
-    * GET  /product-types/count : count all the productTypes.
-    *
-    * @param criteria the criterias which the requested entities should match
-    * @return the ResponseEntity with status 200 (OK) and the count in body
-    */
-    @GetMapping("/product-types/count")
-    @Timed
-    public ResponseEntity<Long> countProductTypes(ProductTypeCriteria criteria) {
-        log.debug("REST request to count ProductTypes by criteria: {}", criteria);
-        return ResponseEntity.ok().body(productTypeQueryService.countByCriteria(criteria));
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
     /**
@@ -143,7 +153,11 @@ public class ProductTypeResource {
     @Timed
     public ResponseEntity<Void> deleteProductType(@PathVariable Long id) {
         log.debug("REST request to delete ProductType : {}", id);
+        Optional<ProductTypeDTO> productTypeDTO = productTypeService.findOne(id);
+        long shopId = productTypeDTO.get().getShopId();
+        String shopName =  productTypeDTO.get().getShopShopName();
         productTypeService.delete(id);
+        CommonUtils.saveShopChange(shopChangeService, shopId, "ProductType", "Existing ProductType deleted",shopName); 
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 
@@ -163,5 +177,4 @@ public class ProductTypeResource {
         HttpHeaders headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page, "/api/_search/product-types");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
-
 }

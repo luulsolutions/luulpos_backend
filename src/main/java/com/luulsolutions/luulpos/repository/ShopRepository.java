@@ -1,6 +1,9 @@
 package com.luulsolutions.luulpos.repository;
 
 import com.luulsolutions.luulpos.domain.Shop;
+
+import java.util.List;
+
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
@@ -11,5 +14,6 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface ShopRepository extends JpaRepository<Shop, Long>, JpaSpecificationExecutor<Shop> {
+	List<Shop> findAllByCompanyId(Long companyId);
 
 }

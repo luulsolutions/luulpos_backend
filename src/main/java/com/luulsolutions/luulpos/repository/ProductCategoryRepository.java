@@ -1,6 +1,9 @@
 package com.luulsolutions.luulpos.repository;
 
 import com.luulsolutions.luulpos.domain.ProductCategory;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
@@ -11,5 +14,6 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface ProductCategoryRepository extends JpaRepository<ProductCategory, Long>, JpaSpecificationExecutor<ProductCategory> {
+	Page<ProductCategory> findAllByShopId(Pageable pageable, Long shopId);
 
 }

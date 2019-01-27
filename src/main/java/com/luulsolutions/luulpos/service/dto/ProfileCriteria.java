@@ -2,18 +2,17 @@ package com.luulsolutions.luulpos.service.dto;
 
 import java.io.Serializable;
 import java.util.Objects;
-import com.luulsolutions.luulpos.domain.enumeration.ProfileType;
+
 import com.luulsolutions.luulpos.domain.enumeration.Gender;
 import com.luulsolutions.luulpos.domain.enumeration.ProfileStatus;
+import com.luulsolutions.luulpos.domain.enumeration.ProfileType;
+
+import io.github.jhipster.service.filter.BigDecimalFilter;
 import io.github.jhipster.service.filter.BooleanFilter;
-import io.github.jhipster.service.filter.DoubleFilter;
 import io.github.jhipster.service.filter.Filter;
-import io.github.jhipster.service.filter.FloatFilter;
-import io.github.jhipster.service.filter.IntegerFilter;
+import io.github.jhipster.service.filter.LocalDateFilter;
 import io.github.jhipster.service.filter.LongFilter;
 import io.github.jhipster.service.filter.StringFilter;
-import io.github.jhipster.service.filter.BigDecimalFilter;
-import io.github.jhipster.service.filter.LocalDateFilter;
 import io.github.jhipster.service.filter.ZonedDateTimeFilter;
 
 /**

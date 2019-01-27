@@ -281,7 +281,7 @@ public class UserService {
     @Scheduled(cron = "0 0 1 * * ?")
     public void removeNotActivatedUsers() {
         userRepository
-            .findAllByActivatedIsFalseAndCreatedDateBefore(Instant.now().minus(3, ChronoUnit.DAYS))
+            .findAllByActivatedIsFalseAndCreatedDateBefore(Instant.now().minus(com.luulsolutions.luulpos.utils.Constants.MAX_DAYS_USER_REMOVED, ChronoUnit.DAYS))
             .forEach(user -> {
                 log.debug("Deleting not activated user {}", user.getLogin());
                 userRepository.delete(user);
