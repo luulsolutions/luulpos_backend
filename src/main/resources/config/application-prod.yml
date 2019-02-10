@@ -89,13 +89,12 @@ spring:
 server:
     port: 8080
     # intall SSL certicate with the app
-     #ssl:
-         #key-store: /etc/letsencrypt/live/luulpos.org/keystore.p12 
-         #key-store-password: youkeystorepassword
-         #keyStoreType: PKCS12
-         #keyAlias: luulpos
-         #ciphers: TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 ,TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 ,TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 ,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_DHE_RSA_WITH_AES_128_CBC_SHA256,TLS_DHE_RSA_WITH_AES_128_CBC_SHA,TLS_DHE_RSA_WITH_AES_256_CBC_SHA256,TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_RSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_CBC_SHA256,TLS_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA,TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA,TLS_RSA_WITH_CAMELLIA_256_CBC_SHA,TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA,TLS_RSA_WITH_CAMELLIA_128_CBC_SHA
-         #enabled-protocols: TLSv1.2
+    ssl:
+        key-store:  ${KEYSTORE-PATH}
+        key-store-password: ${KEYSTORE-PASSWORD}
+        keyStoreType: PKCS12
+        keyAlias: ${KEYSTORE-KEYALIAS}
+        enabled-protocols: TLSv1.2
     compression:
         enabled: true
         mime-types: text/html,text/xml,text/plain,text/css, application/javascript, application/json
@@ -163,4 +162,4 @@ jhipster:
 
 application:
     auth-server:
-        register-url: http://localhost:8080/api/register
+        register-url: ${REGISTER-USER-URL} http://localhost:8080/api/register
