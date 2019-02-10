@@ -162,4 +162,4 @@ jhipster:
 
 application:
     auth-server:
-        register-url: ${REGISTER-USER-URL} http://localhost:8080/api/register
+        register-url: ${REGISTER-USER-URL}
